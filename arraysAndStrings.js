@@ -29,8 +29,8 @@ function isUnique(str) {
   return true;
 }
 
-console.log("isUniqueTest1: ", assertEquals(isUnique('a;sdklfj'), true));
-console.log("isUniqueTest2: ", assertEquals(isUnique('asdf;lkja'), false));
+console.log("isUnique Test 1: ", assertEquals(isUnique('a;sdklfj'), true));
+console.log("isUnique Test 2: ", assertEquals(isUnique('asdf;lkja'), false));
 
 // Check Permutation:
 // Given two strings, write a method to decide if one is a permutation of the other.
@@ -60,5 +60,15 @@ function checkPermutation(str1, str2) {
   return true;
 }
 
-console.log("checkPermutationTest1: ", assertEquals(checkPermutation('a;sdklfj', 'jkl;asdf'), true));
-console.log("checkPermutationTest2: ", assertEquals(checkPermutation('asdf;lkja', 'a;sdkfajd'), false));
+console.log("checkPermutation Test 1: ", assertEquals(checkPermutation('a;sdklfj', 'jkl;asdf'), true));
+console.log("checkPermutation Test 2: ", assertEquals(checkPermutation('asdf;lkja', 'a;sdkfajd'), false));
+
+// URLify:
+// Write a method to replace all spaces in a string with '%20'.
+// You may assume that the string has sufficient space at the end to hold the additional characters,
+// and that you are given the "true" length of the string.
+// (Note: If implementing in Java, please use a character array so that you can perform this operation in place.
+function URLify(str) {
+  return str.trim().replace(/\s+/g, "%20");
+}
+console.log("URLify Test 1: ", assertEquals(URLify(' asdf fdsa df   '), 'asdf%20fdsa%20df'));

@@ -72,3 +72,29 @@ function URLify(str) {
   return str.trim().replace(/\s+/g, "%20");
 }
 console.log("URLify Test 1: ", assertEquals(URLify(' asdf fdsa df   '), 'asdf%20fdsa%20df'));
+
+// Palindrome Permutation:
+// Given a string, write a function to check if it is a permutation of a palindrome.
+// The palindrome does not need to be limited to just dictionary words.
+function palindromePermutation(str) {
+  var str_chars = str.toLowerCase().replace(/\s+/g, "");
+  var counts = countChars(str_chars);
+  var odd_counts = 0;
+  for (var key in counts) {
+    if (counts[key]%2 !== 0) {
+      odd_counts++;
+    }
+  }
+
+  if (odd_counts > 1) {
+    return false;
+  } else {
+    return true;
+  }
+
+}
+
+console.log("palindromePermutation Test 1: ", assertEquals(palindromePermutation("Tact coa"), true));
+console.log("palindromePermutation Test 2: ", assertEquals(palindromePermutation("Tact   coa"), true));
+console.log("palindromePermutation Test 3: ", assertEquals(palindromePermutation("Tactt coa"), false));
+console.log("palindromePermutation Test 4: ", assertEquals(palindromePermutation("Tactt dddcoa"), false));

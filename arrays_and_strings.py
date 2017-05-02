@@ -1,4 +1,5 @@
 from collections import defaultdict
+import re
 
 def assert_equals(test_result, expected_result):
     if test_result == expected_result:
@@ -56,3 +57,26 @@ def URLify(ss):
     return ss.strip().replace(" ", "%20")
 
 print("URLify Test 1: ", assert_equals(URLify(' asdf fdsa df   '), 'asdf%20fdsa%20df'))
+
+
+# Palindrome Permutation:
+# Given a string, write a function to check if it is a permutation of a palindrome.
+# The palindrome does not need to be limited to just dictionary words.
+def palindrome_permutation(ss):
+    ss_chars = re.sub(r'\s+', '', ss.lower())
+    counts = defaultdict(int)
+    for char in ss_chars:
+        counts[char] += 1
+    odd_counts = 0
+    for key in counts:
+        if counts[key]%2 != 0:
+            odd_counts += 1
+    if odd_counts > 1:
+        return False
+    else:
+        return True
+
+print("palindrome_permutation Test 1: ", assert_equals(palindrome_permutation("Tact coa"), True))
+print("palindrome_permutation Test 2: ", assert_equals(palindrome_permutation("Tact   coa"), True))
+print("palindrome_permutation Test 3: ", assert_equals(palindrome_permutation("Tactt coa"), False))
+print("palindrome_permutation Test 4: ", assert_equals(palindrome_permutation("Tactt dddcoa"), False))

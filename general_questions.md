@@ -37,8 +37,10 @@
 * Name 3 ways to decrease page load (perceived or actual load time).
   - Rearrange script loading or have scripts load at opportune moments or only when needed. (Have the most important stuff load first, maybe other things in the background)
   - Ex) With a comic reader, maybe while someone is on a page reading it, immediately consecutive pages load too.
-  - Optimize images, memory usage.
-  - Limit HTTP requests.
+  - Minify scripts.
+  - Optimize images, memory usage. Avoid empty img tags.
+  - Browser caching.
+  - Minimize HTTP requests.
   - Would CSS loading animations help?
 * If you jumped on a project and they used tabs and you used spaces, what would you do?
   - Adapt to tabs. There's a chance they don't care, but I like to maintain consistency, especially if it's a team project.
@@ -52,7 +54,7 @@
     - Auto cycle! Maybe a speed control.
     - Animations! Like moving a slide left or right, or imitate an actual slide show.
 * If you could master one technology this year, what would it be?
-  - C# and Unity.
+  - WebGL or Three.js, C#, and Unity.
 * Explain the importance of standards and standards bodies.
   - It encourages consistent quality and compatibility across all tech in question, including browsers.
 * What is Flash of Unstyled Content? How do you avoid FOUC?
@@ -65,4 +67,4 @@
   - CSS animations are simple but limited. Simple stuff is generally easier to implement in CSS itself than in JS as normally all you have to do is figure out ideal parameters for each animation type available. But not all browsers handle all available CSS features.
   - JavaScript animations can be built in a more complex manner and can probably make up for CSS browsers compatibility issues.
 * What does CORS stand for and what issue does it address?
-  - Cross-Origin Resource Sharing addresses a web domain accessing another domain's assets or other resources. This can pose a security issue (the whole You Don't Know Where That's Been) or traffic issues (hot-linking, bandwidth).
+  - Cross-Origin Resource Sharing addresses a web domain accessing another domain's assets or other resources. This can pose a security issue (You Don't Know Where That's Been) or traffic issues (hot-linking, bandwidth).

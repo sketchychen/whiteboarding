@@ -47,14 +47,19 @@ function countChars(str) {
 }
 
 function checkPermutation(str1, str2) {
-  if (str1.length !== str2.length) { return false; }
+  if (str1.length !== str2.length) {
+    return false;
+  }
 
   var counts1 = countChars(str1);
   var counts2 = countChars(str2);
 
   for (var key in counts1) {
-    if (!counts2.hasOwnProperty(key)) { return false; }
-    else if (counts1[key] !== counts2[key]) { return false; }
+    if (!counts2.hasOwnProperty(key)) {
+      return false;
+    } else if (counts1[key] !== counts2[key]) {
+      return false;
+    }
   }
 
   return true;
@@ -81,7 +86,7 @@ function palindromePermutation(str) {
   var counts = countChars(str_chars);
   var odd_counts = 0;
   for (var key in counts) {
-    if (counts[key]%2 !== 0) {
+    if (counts[key] % 2 !== 0) {
       odd_counts++;
     }
   }
@@ -98,3 +103,39 @@ console.log("palindromePermutation Test 1: ", assertEquals(palindromePermutation
 console.log("palindromePermutation Test 2: ", assertEquals(palindromePermutation("Tact   coa"), true));
 console.log("palindromePermutation Test 3: ", assertEquals(palindromePermutation("Tactt coa"), false));
 console.log("palindromePermutation Test 4: ", assertEquals(palindromePermutation("Tactt dddcoa"), false));
+
+
+// One Away:
+// There are three types of edits that can be performed on strings: insert a character,
+// remove a character, or replace a character. Given two strings, write a function
+// to check if they are one edit (or zero edits) away.
+
+function oneAway(str1, str2) {
+  if (Math.abs(str1.length - str2.length) > 1) {
+    return false;
+  }
+
+  var longer = str1.length > str2.length ? str1 : str2,
+      shorter = str1.length > str2.length ? str2 : str1;
+
+  var indS = 0, // increment through the shorter str
+      ctr = 0; // number of "edits" needed
+
+  for (var i = 0; i < longer.length; i++) {
+    if (str1.length !== str2.length) { // unequal lengths -- ex: "pale" vs. "ple"
+      longer[i] === shorter[indS] ? indS++ : ctr++;
+    } else {
+      if (longer[i] !== shorter[i]) { // equal lengths -- ex: "pale" vs. "bale" or "pale" vs. "bake"
+        ctr++;
+      }
+    }
+
+  }
+
+  return ctr > 1 ? false : true;
+}
+
+console.log("oneAway Test 1: ", assertEquals(oneAway("pale", "ple"), true));
+console.log("oneAway Test 2: ", assertEquals(oneAway("pales", "pale"), true));
+console.log("oneAway Test 3: ", assertEquals(oneAway("pale", "bale"), true));
+console.log("oneAway Test 4: ", assertEquals(oneAway("pale", "bake"), false));

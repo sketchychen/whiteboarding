@@ -73,18 +73,22 @@ function printDay(dayNumber){
 }
 
 function dayOfWeek(month, day, year) {
-  // subtract one from month so that daysInMonth's indeces line up with month
+  // subtract one from month so that daysInEachMonth's indeces line up with month
   month--;
   // subtract one from day so 1/1/1589 means 0 total days after anchor date, and 0%7 = 0, Sunday.
   day--;
 
-  var daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  var daysInEachMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   var anchorYear = 1589; // 1/1/1589 is assumed a Sunday
 
+  // take into account leap years. for every leap year there is an additional day to account
   var totalLeapDays = countLeapYears(anchorYear, year);
-  var daysInFullMonths = month !== 0 ? daysInMonth.slice(0, month).reduce(function(a, b) { return a+b; }) : 0;
 
-  var totalDays = (year-anchorYear)*365 + totalLeapDays + daysInFullMonths + day;
+  // if the given month is January, there are no full months to add, which means nothing to .reduce()
+  // .reduce() can't take an empty array so we return a 0 instead.
+  var daysFromFullMonths = month === 0 ? 0 : daysInEachMonth.slice(0, month).reduce(function(a, b) { return a+b; });
+
+  var totalDays = (year-anchorYear)*365 + totalLeapDays + daysFromFullMonths + day;
 
   printDay(totalDays%7);
 }

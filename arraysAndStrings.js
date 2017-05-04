@@ -138,3 +138,58 @@ console.log("oneAway Test 1: ", assertEquals(oneAway("pale", "ple"), true));
 console.log("oneAway Test 2: ", assertEquals(oneAway("pales", "pale"), true));
 console.log("oneAway Test 3: ", assertEquals(oneAway("pale", "bale"), true));
 console.log("oneAway Test 4: ", assertEquals(oneAway("pale", "bake"), false));
+
+
+// String Compression:
+// Implement a method to perform basic string compression using the counts of repeated characters.
+// If the "compressed" string would not become smaller than the original string,
+// your method should return the original string. You can assume the string has
+// only uppercase and lowercase letters (a-z).
+
+
+function stringCompression(str) {
+  var result = "";
+  var check = str[0];
+  var count = 1;
+
+  // for (var i=1; i<str.length; i++) {
+  //   if (str[i] !== check) {
+  //     result += check + count;
+  //     if (str.length < result.length) {
+  //       return str;
+  //     }
+  //     check = str[i];
+  //     count = 1;
+  //   } else {
+  //     count++;
+  //   }
+  // }
+  //
+  // result += check + count;
+
+  for (var i=0; i<str.length; i++) {
+    if (str[i+1] !== check) {
+      result += check + count;
+      if (str.length < result.length) {
+        return str;
+      }
+      check = str[i+1];
+      count = 1;
+    } else {
+      count++;
+    }
+  }
+
+  // result += check + count;
+  return result;
+}
+
+console.log("stringCompression Test 1: ", assertEquals(stringCompression("aaaaaaabbcccdaa"), "a7b2c3d1a2"));
+console.log("stringCompression Test 2: ", assertEquals(stringCompression("abce"), "abce"));
+
+// Rotate Matrix:
+// Given an image represented by NxN matrix, where each pixel in the image is 4 bytes,
+// write a method to rotate the image by 90 degrees. Can you do this in place?
+function rotateMatrix(arrayOfArrays) {
+
+}

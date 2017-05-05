@@ -190,6 +190,59 @@ console.log("stringCompression Test 2: ", assertEquals(stringCompression("abce")
 // Rotate Matrix:
 // Given an image represented by NxN matrix, where each pixel in the image is 4 bytes,
 // write a method to rotate the image by 90 degrees. Can you do this in place?
-function rotateMatrix(arrayOfArrays) {
-
+function isSquare(M) {
+  M.forEach(function(row) {
+    if (row.length !== M.length) {
+      return false;
+    }
+  });
+  return true;
 }
+
+function rotateMatrix(M) {
+  if (M.length < 2) { return M; }
+  if (!isSquare(M)) { return false; }
+
+  var N = M.length - 1;
+  var temp1,
+      temp2;
+
+  // iterate through rows
+  for (var i = 0; i < Math.floor(M.length/2); i++) {
+    // iterate through cols
+    for (var j = i; j < N-i; j++) {
+      // in counter clockwise (+90 degrees) order:
+      // point 0: M[i][j]
+      // point 1: M[N-j][i]
+      // point 2: M[N-i][N-j]
+      // point 3: M[j][N-i]
+
+      // points 3 => 0 => 1 => 2 => 3
+
+      temp1 = M[i][j];
+      M[i][j] = M[j][N-i]; // point 3 -> 0
+
+      temp2 = M[N-j][i];
+      M[N-j][i] = temp1; // point 0 -> 1
+
+      temp1 = M[N-i][N-j];
+      M[N-i][N-j] = temp2; // point 1 -> 2
+
+      temp2 = M[i][N-j];
+      M[j][N-i] = temp1; // point 2 -> 3
+
+    }
+  }
+
+  M.forEach(function(row){ console.log(row) });
+  return M;
+}
+
+var M2 = [["m00", "m01"], ["m10", "m11"]];
+var M3 = [["m00", "m01", "m02"], ["m10", "m11", "m12"], ["m20", "m21", "m22"]];
+var M4 = [["m00", "m01", "m02", "m03"], ["m10", "m11", "m12", "m13"], ["m20", "m21", "m22", "m23"], ["m30", "m31", "m32", "m33"]];
+var M5 = [["m00", "m01", "m02", "m03", "m04"], ["m10", "m11", "m12", "m13", "m14"], ["m20", "m21", "m22", "m23", "m24"], ["m30", "m31", "m32", "m33", "m34"], ["m40", "m41", "m42", "m43", "m44"]];
+rotateMatrix(M2);
+rotateMatrix(M3);
+rotateMatrix(M4);
+rotateMatrix(M5);

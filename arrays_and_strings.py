@@ -45,8 +45,8 @@ def check_permutation(ss1, ss2):
 
     return True
 
-print("check_permutation Test 1: ", assert_equals(check_permutation('a;sdklfj', 'jkl;asdf'), True));
-print("check_permutation Test 2: ", assert_equals(check_permutation('asdf;lkja', 'a;sdkfajd'), False));
+print("check_permutation Test 1: " + assert_equals(check_permutation('a;sdklfj', 'jkl;asdf'), True));
+print("check_permutation Test 2: " + assert_equals(check_permutation('asdf;lkja', 'a;sdkfajd'), False));
 
 # URLify:
 # Write a method to replace all spaces in a string with '%20'.
@@ -56,7 +56,7 @@ print("check_permutation Test 2: ", assert_equals(check_permutation('asdf;lkja',
 def URLify(ss):
     return ss.strip().replace(" ", "%20")
 
-print("URLify Test 1: ", assert_equals(URLify(' asdf fdsa df   '), 'asdf%20fdsa%20df'))
+print("URLify Test 1: " + assert_equals(URLify(' asdf fdsa df   '), 'asdf%20fdsa%20df'))
 
 
 # Palindrome Permutation:
@@ -76,7 +76,23 @@ def palindrome_permutation(ss):
     else:
         return True
 
-print("palindrome_permutation Test 1: ", assert_equals(palindrome_permutation("Tact coa"), True))
-print("palindrome_permutation Test 2: ", assert_equals(palindrome_permutation("Tact   coa"), True))
-print("palindrome_permutation Test 3: ", assert_equals(palindrome_permutation("Tactt coa"), False))
-print("palindrome_permutation Test 4: ", assert_equals(palindrome_permutation("Tactt dddcoa"), False))
+print("palindrome_permutation Test 1: " + assert_equals(palindrome_permutation("Tact coa"), True))
+print("palindrome_permutation Test 2: " + assert_equals(palindrome_permutation("Tact   coa"), True))
+print("palindrome_permutation Test 3: " + assert_equals(palindrome_permutation("Tactt coa"), False))
+print("palindrome_permutation Test 4: " + assert_equals(palindrome_permutation("Tactt dddcoa"), False))
+
+# Assume you have a method isSubstring which checks if one word is a substring of another.
+# Given two strings, s1 and s2, write code to check if s2 is a rotation of s1
+# using only one call to isSubstring (e.g. "waterbottle" is a rotation of "erbottlewat")
+def is_substring(s1, s2):
+  return s1 in s2
+
+# print(assert_equals(is_substring("water", "waterbottle"), True));
+
+def string_rotation(s1, s2):
+  return len(s1) == len(s2) and s1 in s2+s2
+
+print("string_rotation Test 1: " + assert_equals(string_rotation("water", "water"), True));
+print("string_rotation Test 2: " + assert_equals(string_rotation("waterbottle", "erbottlewat"), True));
+print("string_rotation Test 3: " + assert_equals(string_rotation("waterbot", "erbottlewat"), False));
+print("string_rotation Test 4: " + assert_equals(string_rotation("waterbottle", "erbottle"), False));

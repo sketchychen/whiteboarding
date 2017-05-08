@@ -238,11 +238,95 @@ function rotateMatrix(M) {
   return M;
 }
 
-var M2 = [["m00", "m01"], ["m10", "m11"]];
-var M3 = [["m00", "m01", "m02"], ["m10", "m11", "m12"], ["m20", "m21", "m22"]];
-var M4 = [["m00", "m01", "m02", "m03"], ["m10", "m11", "m12", "m13"], ["m20", "m21", "m22", "m23"], ["m30", "m31", "m32", "m33"]];
-var M5 = [["m00", "m01", "m02", "m03", "m04"], ["m10", "m11", "m12", "m13", "m14"], ["m20", "m21", "m22", "m23", "m24"], ["m30", "m31", "m32", "m33", "m34"], ["m40", "m41", "m42", "m43", "m44"]];
+var M2 = [
+  ["m00", "m01"],
+  ["m10", "m11"]
+];
+var M3 = [
+  ["m00", "m01", "m02"],
+  ["m10", "m11", "m12"],
+  ["m20", "m21", "m22"]
+];
+var M4 = [
+  ["m00", "m01", "m02", "m03"],
+  ["m10", "m11", "m12", "m13"],
+  ["m20", "m21", "m22", "m23"],
+  ["m30", "m31", "m32", "m33"]
+];
+var M5 = [
+  ["m00", "m01", "m02", "m03", "m04"],
+  ["m10", "m11", "m12", "m13", "m14"],
+  ["m20", "m21", "m22", "m23", "m24"],
+  ["m30", "m31", "m32", "m33", "m34"],
+  ["m40", "m41", "m42", "m43", "m44"]
+];
 rotateMatrix(M2);
 rotateMatrix(M3);
 rotateMatrix(M4);
 rotateMatrix(M5);
+
+// Zero Matrix:
+// Write an algorithm such that if an element in an MxN matrix is 0,
+// its entire row and column are set to 0.
+function zeroMatrix(M) {
+  for (var i = 0; i < M.length; i++) { // iterate through list of rows
+    for (var j = 0; j < M[i].length; j++) { // iterate values in each row
+      if (M[i][j] === 0) {
+        for (var k = 0; k < M.length; k++) { // iterate through list of rows
+          if (M[k][j] !== 0) {
+            M[k][j] = "zero me";
+          }
+        }
+        for (var l = 0; l < M[i].length; l++) { // iterate values in each row
+          if (M[i][l] !== 0) {
+            M[i][l] = "zero me";
+          }
+        }
+      }
+    }
+  }
+
+  for (var i = 0; i < M.length; i++) {
+    for (var j = 0; j < M[i].length; j++) {
+      if (M[i][j] === "zero me") {
+        M[i][j] = 0;
+      }
+    }
+  }
+
+  M.forEach(function(row){ console.log(row) });
+  return M;
+}
+
+var Z34 = [
+  [0, 1, 1, 1],
+  [1, 1, 0, 1],
+  [1, 1, 1, 1]
+];
+var Z45 = [
+  [0, 1, 1, 1, 1],
+  [1, 1, 1, 1, 1],
+  [1, 1, 0, 1, 1],
+  [1, 1, 1, 1, 1]
+];
+zeroMatrix(Z34);
+zeroMatrix(Z45);
+
+// Assume you have a method isSubstring which checks if one word is a substring of another.
+// Given two strings, s1 and s2, write code to check if s2 is a rotation of s1
+// using only one call to isSubstring (e.g. "waterbottle" is a rotation of "erbottlewat")
+function isSubstring(s1, s2) {
+  return (s2.indexOf(s1) > -1);
+}
+
+// console.log(assertEquals(isSubstring("water", "waterbottle"), true));
+// console.log(assertEquals(isSubstring("water", "water"), true));
+
+function stringRotation(s1, s2) {
+  return s1.length === s2.length && (s2+s2).indexOf(s1) > -1;
+}
+
+console.log("stringRotation Test 1: ", assertEquals(stringRotation("water", "water"), true));
+console.log("stringRotation Test 2: ", assertEquals(stringRotation("waterbottle", "erbottlewat"), true));
+console.log("stringRotation Test 3: ", assertEquals(stringRotation("waterbot", "erbottlewat"), false));
+console.log("stringRotation Test 4: ", assertEquals(stringRotation("waterbottle", "erbottle"), false));

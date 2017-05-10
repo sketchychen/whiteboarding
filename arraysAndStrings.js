@@ -180,7 +180,6 @@ function stringCompression(str) {
     }
   }
 
-  // result += check + count;
   return result;
 }
 

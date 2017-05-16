@@ -1,3 +1,11 @@
+function assertEquals(testResult, expectedResult) {
+  if (testResult === expectedResult) {
+    return "Test passed.";
+  } else {
+    return "Test failed.";
+  }
+}
+
 // Triple Step:
 // A child is running up a staircase with n steps and can hop either 1 step,
 // 2 steps, or 3 steps at a time. Implement a method to count how many
@@ -9,15 +17,20 @@ function tripleStep(n) {
   return tripleStep(n-1) + tripleStep(n-2) + tripleStep(n-3);
 }
 
+console.log("tripleStep Test 1: ", assertEquals(tripleStep(2), 2));
+console.log("tripleStep Test 2: ", assertEquals(tripleStep(3), 4));
+console.log("tripleStep Test 3: ", assertEquals(tripleStep(4), 7));
+
 // Robot in a Grid:
 // Imagine a robot sitting on the upper left corner of a grid with r rows and
 // c columns. The robot can only move in two directions, right and down, but
 // certain cells are "off limits" such that the robot cannot step on them.
 // Design an algorithm to find a path for the robot from the top left to the
 // bottom right.
-function robotInAGrid(r, c) {
-  if (r === 0 && c === 0) { return true; }
-  
+function robotInAGrid(grid) {
+  // assuming grid is an array of arrays of size rxc
+
+
 }
 
 // Magic Index:

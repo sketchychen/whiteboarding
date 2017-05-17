@@ -28,7 +28,7 @@ console.log("tripleStep Test 3: ", assertEquals(tripleStep(4), 7));
 // Design an algorithm to find a path for the robot from the top left to the
 // bottom right.
 function robotInAGrid(grid) {
-  // assuming grid is an array of arrays of size rxc
+  // assuming grid is an array of length r containing arrays of length c
 
 
 }

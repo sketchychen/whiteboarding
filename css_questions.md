@@ -1,8 +1,12 @@
 #### CSS Questions:
 
 * What is the difference between classes and IDs in CSS?
+  - IDs are specific to a single instance of an element, classes are for multiple elements.
 * What's the difference between "resetting" and "normalizing" CSS? Which would you choose, and why?
+  - CSS resets removes all built-in browser styling (making h1 look the same as p).
+  - CSS normalizing provides a consistent cross-browser style baseline.
 * Describe Floats and how they work.
+  - Floats are magic and can only work when powered by enough faith.
 * Describe z-index and how stacking context is formed.
 * Describe BFC(Block Formatting Context) and how it works.
 * What are the various clearing techniques and which is appropriate for what context?
@@ -15,6 +19,7 @@
 * Have you ever used a grid system, and if so, what do you prefer?
 * Have you used or implemented media queries or mobile specific layouts/CSS?
 * Are you familiar with styling SVG?
+  - I've done it once to the extent of giving it a fill color and scaling it. And giving it a rotation animation.
 * How do you optimize your webpages for print?
 * What are some of the "gotchas" for writing efficient CSS?
 * What are the advantages/disadvantages of using CSS preprocessors?
